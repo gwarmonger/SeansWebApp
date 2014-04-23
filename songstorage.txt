@@ -1,0 +1,279 @@
+-- phpMyAdmin SQL Dump
+-- version 4.0.4
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Apr 22, 2014 at 11:18 PM
+-- Server version: 5.6.12-log
+-- PHP Version: 5.4.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `songstorage`
+--
+CREATE DATABASE IF NOT EXISTS `songstorage` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `songstorage`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ci_sessions`
+--
+
+CREATE TABLE IF NOT EXISTS `ci_sessions` (
+  `session_id` varchar(40) COLLATE utf8_bin NOT NULL DEFAULT '0',
+  `ip_address` varchar(16) COLLATE utf8_bin NOT NULL DEFAULT '0',
+  `user_agent` varchar(150) COLLATE utf8_bin NOT NULL,
+  `last_activity` int(10) unsigned NOT NULL DEFAULT '0',
+  `user_data` text COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`session_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `ci_sessions`
+--
+
+INSERT INTO `ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
+('974b269b3336c2e14f9cae2b33bf7378', '::1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:28.0) Gecko/20100101 Firefox/28.0 FirePHP/0.7.4', 1398112611, ''),
+('a686f33d9b99e43737a0fb5a3911eeed', '::1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:28.0) Gecko/20100101 Firefox/28.0', 1398107317, 'a:4:{s:9:"user_data";s:0:"";s:7:"user_id";s:1:"1";s:8:"username";s:10:"gwarmonger";s:6:"status";s:1:"1";}'),
+('acaca9e9355b66fef36775b10206dbf4', '::1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:28.0) Gecko/20100101 Firefox/28.0', 1398112826, '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gwarmonger`
+--
+
+CREATE TABLE IF NOT EXISTS `gwarmonger` (
+  `songid` int(4) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `url` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`songid`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `gwarmonger`
+--
+
+INSERT INTO `gwarmonger` (`songid`, `title`, `description`, `url`) VALUES
+(1, 'Test Title', 'asdga hele hell', 'gwarmonger.mp3'),
+(2, 'sdfasdgasdgasdg', 'asdgasdg', 'asdgasg.mp3'),
+(3, 'asdf', 'asdggasdg', 'uwmad.mp3');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `login_attempts`
+--
+
+CREATE TABLE IF NOT EXISTS `login_attempts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ip_address` varchar(40) COLLATE utf8_bin NOT NULL,
+  `login` varchar(50) COLLATE utf8_bin NOT NULL,
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `memo`
+--
+
+CREATE TABLE IF NOT EXISTS `memo` (
+  `memoid` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
+  `memo` blob NOT NULL,
+  `category` varchar(255) NOT NULL,
+  `thedate` date NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `postop` int(11) NOT NULL,
+  `posleft` int(11) NOT NULL,
+  PRIMARY KEY (`memoid`),
+  KEY `id` (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=40 ;
+
+--
+-- Dumping data for table `memo`
+--
+
+INSERT INTO `memo` (`memoid`, `id`, `memo`, `category`, `thedate`, `title`, `username`, `postop`, `posleft`) VALUES
+(1, 1, 0x61736467, '', '2014-03-18', 'asgasdg', 'gwarmonger', 0, 0),
+(2, 1, 0x617363617363, '', '2014-03-18', 'ascas', 'gwarmonger', 0, 0),
+(3, 1, 0x746573746f6e65, '', '2014-03-18', 'test', 'gwarmonger', 0, 0),
+(17, 1, 0x4e65772044617465, '', '2014-03-19', 'Test', 'gwarmonger', 0, 0),
+(18, 1, 0x225365642075742070657273706963696174697320756e6465206f6d6e69732069737465206e61747573206572726f722073697420766f6c7570746174656d206163637573616e7469756d20646f6c6f72656d717565206c617564616e7469756d2c20746f74616d2072656d206170657269616d2c2065617175652069707361207175616520616220696c6c6f20696e76656e746f726520766572697461746973206574207175617369206172636869746563746f206265617461652076697461652064696374612073756e74206578706c696361626f2e204e656d6f20656e696d20697073616d20766f6c7570746174656d207175696120766f6c7570746173207369742061737065726e6174757220617574206f646974206175742066756769742c20736564207175696120636f6e73657175756e747572206d61676e6920646f6c6f72657320656f732071756920726174696f6e6520766f6c7570746174656d207365717569206e65736369756e742e204e6571756520706f72726f20717569737175616d206573742c2071756920646f6c6f72656d20697073756d207175696120646f6c6f722073697420616d65742c20636f6e73656374657475722c2061646970697363692076656c69742c207365642071756961206e6f6e206e75, '', '2014-03-20', 'THis is a test', 'gwarmonger', 0, 0),
+(19, 1, 0x225365642075742070657273706963696174697320756e6465206f6d6e69732069737465206e61747573206572726f722073697420766f6c7570746174656d206163637573616e7469756d20646f6c6f72656d717565206c617564616e7469756d2c20746f74616d2072656d206170657269616d2c2065617175652069707361207175616520616220696c6c6f20696e76656e746f726520766572697461746973206574207175617369206172636869746563746f206265617461, '', '2014-03-20', 'Hello', 'gwarmonger', 0, 0),
+(20, 1, 0x225365642075742070657273706963696174697320756e6465206f6d6e69732069737465206e61747573206572726f722073697420766f6c7570746174656d206163637573616e7469756d20646f6c6f72656d717565206c617564616e7469756d2c20746f74616d2072656d206170657269616d2c2065617175652069707361207175616520616220696c6c6f20696e76656e746f726520766572697461746973206574207175617369206172636869746563746f206265617461652076697461652064696374612073756e74206578706c696361626f2e204e656d6f20656e696d20697073616d20766f6c7570746174656d207175696120766f6c7570746173207369742061737065726e6174757220617574206f646974206175742066756769742c20736564207175696120636f6e73657175756e747572206d61676e6920646f6c6f72657320656f732071756920726174696f6e6520766f6c7570746174656d207365717569206e65736369756e742e204e6571756520706f72726f20717569737175616d206573742c2071756920646f6c6f72656d20697073756d207175696120646f6c6f722073697420616d65742c20636f6e73656374657475722c2061646970697363692076656c69742c207365642071756961206e6f6e206e75225365642075742070657273706963696174697320756e6465206f6d6e69732069737465206e61747573206572726f722073697420766f6c7570746174656d206163637573616e7469756d20646f6c6f72656d717565206c617564616e7469756d2c20746f74616d2072656d206170657269616d2c2065617175652069707361207175616520616220696c6c6f20696e76656e746f726520766572697461746973206574207175617369206172636869746563746f206265617461652076697461652064696374612073756e74206578706c696361626f2e204e656d6f20656e696d20697073616d20766f6c7570746174656d207175696120766f6c7570746173207369742061737065726e6174757220617574206f646974206175742066756769742c20736564207175696120636f6e73657175756e747572206d61676e6920646f6c6f72657320656f732071756920726174696f6e6520766f6c7570746174656d207365717569206e65736369756e742e204e6571756520706f72726f20717569737175616d206573742c2071756920646f6c6f72656d20697073756d207175696120646f6c6f722073697420616d65742c20636f6e73656374657475722c2061646970697363692076656c69742c207365642071756961206e6f6e206e75, '', '2014-03-20', 'Hello', 'gwarmonger', 0, 0),
+(21, 1, 0x4153474153472041615347415347206153484a414a4147414646416820617367206173, '', '2014-03-23', 'Tester memo', 'gwarmonger', 0, 0),
+(22, 1, 0x41414741204548656c2041676164672047544a446620534253444647, '', '2014-04-01', 'Hello, I am a proper memo', 'gwarmonger', 0, 0),
+(23, 1, 0x416d2049207265616461626c6520617420616c6c3f2050726f6261626c79206e6f742e, '', '2014-04-01', 'Am I readable? Testing if this can be seen.', 'gwarmonger', 80, -210),
+(24, 1, 0x4920616d2061206d656d6f2e20492077616e7420746f20626520616c6976652e204d616b65206d6520616c6976652e200d0a, '', '2014-04-01', 'I am a new memo HELLO ME', 'gwarmonger', 35, 210),
+(25, 1, 0x666873646668647361687364666873646668, '', '2014-04-01', 'I am tthe newest', 'gwarmonger', 0, 0),
+(27, 1, 0x41474841574741534447, '', '2014-04-01', 'HELLO DANNNY BOY', 'gwarmonger', 0, 0),
+(28, 1, 0x544849532049532041204e4557204d454d454f50, '', '2014-04-02', 'HELLO JOEL ', 'gwarmonger', 0, 0),
+(30, 1, 0x48656c6c6f20776f726c64, '', '2014-04-10', 'I am a new memo ', 'gwarmonger', 0, 0),
+(34, 1, 0x6e61676120616720617367612067, '', '2014-04-12', 'asgasg new new new ', 'gwarmonger', 0, 420),
+(35, 1, '', '', '2014-04-12', 'Testing new one again', 'gwarmonger', 0, 0),
+(36, 1, 0x4147672041472041676561672041474541204741676520, '', '2014-04-12', 'Testing a new onge again', 'gwarmonger', 0, 0),
+(37, 0, 0x77654754415347415347, '', '2014-04-14', 'Testing ', '', 0, -840),
+(38, 0, 0x417767617367617367617367, '', '2014-04-14', 'Hello Dam', '', 0, 840),
+(39, 0, 0x48656c6c6f20776f726c64, '', '2014-04-21', 'New Memo ', '', 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `movielist`
+--
+
+CREATE TABLE IF NOT EXISTS `movielist` (
+  `userid` int(11) NOT NULL,
+  `movieid` int(11) NOT NULL,
+  `category` varchar(255) NOT NULL,
+  `filmuserid` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `thumburl` varchar(255) NOT NULL,
+  PRIMARY KEY (`filmuserid`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
+
+--
+-- Dumping data for table `movielist`
+--
+
+INSERT INTO `movielist` (`userid`, `movieid`, `category`, `filmuserid`, `title`, `thumburl`) VALUES
+(1, 16521, 'Another still agagag', 15, 'First Blood (Rambo: First Blood)', 'http://content6.flixster.com/movie/11/13/69/11136980_mob.jpg'),
+(1, 9, 'HI THERE', 16, 'Star Wars: Episode III - Revenge of the Sith 3D', 'http://content8.flixster.com/movie/10/94/47/10944718_mob.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `movies`
+--
+
+CREATE TABLE IF NOT EXISTS `movies` (
+  `userid` int(255) NOT NULL,
+  `filmid` int(255) NOT NULL,
+  `movieid` int(255) NOT NULL AUTO_INCREMENT,
+  `category` varchar(255) NOT NULL,
+  PRIMARY KEY (`movieid`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+
+--
+-- Dumping data for table `movies`
+--
+
+INSERT INTO `movies` (`userid`, `filmid`, `movieid`, `category`) VALUES
+(1, 0, 3, 'Testing again again ggg'),
+(1, 0, 4, 'Another one'),
+(1, 0, 5, 'Another still'),
+(1, 0, 6, 'Another still agagag'),
+(1, 0, 7, 'HI THERE'),
+(1, 0, 8, 'New april cat'),
+(1, 0, 9, 'New atesting a ');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `songs`
+--
+
+CREATE TABLE IF NOT EXISTS `songs` (
+  `songid` int(255) NOT NULL AUTO_INCREMENT,
+  `songname` varchar(255) NOT NULL,
+  `songdesc` varchar(255) NOT NULL,
+  `songurl` varchar(255) NOT NULL,
+  `userid` int(255) NOT NULL,
+  PRIMARY KEY (`songid`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
+
+--
+-- Dumping data for table `songs`
+--
+
+INSERT INTO `songs` (`songid`, `songname`, `songdesc`, `songurl`, `userid`) VALUES
+(5, 'Tester', 'Tsetaing ate a tat ', '', 1),
+(6, 'AM I working ', 'Hello world', '', 1),
+(7, 'Sean one two three', 'onasdg asg ', '', 1),
+(8, 'asdgasdg', 'asdgasdgasdg', '', 1),
+(9, 'Terstatein', 'AGASGASG', '', 0),
+(10, 'ccnsdfhjsdf', 'ahafhafhafhaf', '', 0),
+(11, 'zfnndfhadh', 'sdfjsdhjdsfjsdj', '', 0),
+(12, 'Yo Dawg', 'AGAGASGASG', '', 0),
+(13, 'asffgag', 'afhadfh', '', 0),
+(14, 'fkkrurk', 'uddkdku', '', 0),
+(15, 'dhdfhsdfh', 'sdffhsdfhsdfh', '', 1),
+(16, 'dhdfhsdfh', 'sdffhsdfhsdfh', '', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) COLLATE utf8_bin NOT NULL,
+  `password` varchar(255) COLLATE utf8_bin NOT NULL,
+  `email` varchar(100) COLLATE utf8_bin NOT NULL,
+  `activated` tinyint(1) NOT NULL DEFAULT '1',
+  `banned` tinyint(1) NOT NULL DEFAULT '0',
+  `ban_reason` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `new_password_key` varchar(50) COLLATE utf8_bin DEFAULT NULL,
+  `new_password_requested` datetime DEFAULT NULL,
+  `new_email` varchar(100) COLLATE utf8_bin DEFAULT NULL,
+  `new_email_key` varchar(50) COLLATE utf8_bin DEFAULT NULL,
+  `last_ip` varchar(40) COLLATE utf8_bin NOT NULL,
+  `last_login` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `email`, `activated`, `banned`, `ban_reason`, `new_password_key`, `new_password_requested`, `new_email`, `new_email_key`, `last_ip`, `last_login`, `created`, `modified`) VALUES
+(1, 'gwarmonger', '$2a$08$oFVpthiaxzp4jB4BJx/Ihu2HZRdTzdki8axpk4vZCf9aynYGjpRHy', 'ander562@uwm.edu', 1, 0, NULL, NULL, NULL, NULL, '82f802655d8188da5f72145e08d14112', '::1', '2014-04-21 18:04:05', '2014-03-02 08:27:57', '2014-04-21 18:04:05'),
+(2, 'tester', '$2a$08$LPoSKD.RRw1Z0G8223Zw4Oqdx/n7MihFLlvybqnYk7eBBm/qRSDzu', 'ander562test@uwm.edu', 1, 0, NULL, NULL, NULL, NULL, '0d95eb24047072c4ce963c54a1366279', '::1', '2014-03-18 22:44:33', '2014-03-03 06:42:27', '2014-03-18 22:44:34');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_autologin`
+--
+
+CREATE TABLE IF NOT EXISTS `user_autologin` (
+  `key_id` char(32) COLLATE utf8_bin NOT NULL,
+  `user_id` int(11) NOT NULL DEFAULT '0',
+  `user_agent` varchar(150) COLLATE utf8_bin NOT NULL,
+  `last_ip` varchar(40) COLLATE utf8_bin NOT NULL,
+  `last_login` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`key_id`,`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_profiles`
+--
+
+CREATE TABLE IF NOT EXISTS `user_profiles` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
