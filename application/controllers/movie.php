@@ -14,46 +14,38 @@ class Movie extends CI_Controller {
 		}
 	function index(){
 		$this->load->model('movie/moviedata');
-		$theterm = $this->input->post('term');
-		$username = $this->session->userdata('username');
 		$userid = $this->session->userdata('user_id');
-		$data['username']=$username;
 		$data['userid']=$userid;
-		//$catdata['category'] = $this->moviedata->Moviequery();
-		$catitems['category'] = $this->moviedata->Catitems();
+		$data['category'] = $this->moviedata->Getcat();
 		$this->load->view('templates/header');
 		$this->load->view('movie/movienews');
 		$this->load->view('movie/movienews2');
+		$this->load->view('movie/moviecats',$data);
+		$this->load->view('movie/mycats');
 		$this->load->view('movie/moviesearch',$data);
 		$this->load->view('movie/newdvds');
 		$this->load->view('movie/newfilms');
 		$this->load->view('movie/upcoming');
-		$this->load->view('movie/moviecats');
-		$this->load->view('movie/mycats',$catitems);
+		$this->load->view('movie/moviemodal', $data);
 		$this->load->view('templates/footer');	
 		}
 
 	function search(){
-		$username = $this->session->userdata('username');
 		$userid = $this->session->userdata('user_id');
-		$data['username']=$username;
 		$data['userid']=$userid;
 		$this->load->model('movie/moviedata');
 		$theterm = $this->input->post('term');
-		$data['category'] = $this->moviedata->Moviequery();
+		$data['category'] = $this->moviedata->Getcat();
 		$this->load->view('templates/header');
 		$this->load->view('movie/moviemain', $theterm);
-		$this->load->view('movie/moviemodal', $data);
+		$this->load->view('movie/modal2', $data);
 		$this->load->view('templates/footer');
 		}
 	function category(){
 		$category = $this->input->post('category');
-		$userid = $this->input->post('userid');
 		$data = array(
-			'category'=>$category,
-			'userid'=>$userid
+			'category'=>$category
 		);
-
 		$this->load->model('movie/moviedata');
 		$this->moviedata->Catsave($data);
 		redirect('/movie');
@@ -73,9 +65,23 @@ class Movie extends CI_Controller {
 			'title'=>$title,
 			'thumburl'=>$thumburl	
 		);
-
 		$this->moviedata->Addmovie($data);
-		redirect('/movie');
+	}
+	function deleteitem(){
+		$this->load->model('movie/moviedata');
+		$movieid = $this->input->post('movieid');
+		$this->moviedata->Deleteitem($movieid);
+	}
+	function deletecat(){
+		$this->load->model('movie/moviedata');
+		$cat = $this->input->post('category');
+		$this->moviedata->Deletecat($cat);
 		
+	}
+	function getcatitem(){
+		$category = $this->input->post('category');
+		$this->load->model('movie/moviedata');
+		$movies['movies']= $this->moviedata->Catitems($category);
+		$this->load->view('movie/catlistcontainer', $movies);
 	}
 }

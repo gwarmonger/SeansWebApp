@@ -1,3 +1,5 @@
+<div class="col-md-4">
+<div class="loginform">
 <?php
 $login = array(
 	'name'	=> 'login',
@@ -87,10 +89,12 @@ $submit = array(
 			<?php echo form_checkbox($remember); ?>
 			<?php echo form_label('Remember me', $remember['id']); ?>
 			<?php echo anchor('/auth/forgot_password/', 'Forgot password'); ?>
-			<?php if ($this->config->item('allow_registration', 'tank_auth')) echo anchor('/auth/register/', 'Register'); ?>
+			<!--<?php if ($this->config->item('allow_registration', 'tank_auth')) echo anchor('/auth/register/', 'Register'); ?>-->
 		</td>
 	</tr>
 </table>
 <?php echo form_submit($submit, 'Login'); ?>
 <?php echo form_close(); ?>
+</div>
+</div>
 </div>

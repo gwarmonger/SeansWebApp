@@ -14,14 +14,16 @@ class Memo extends CI_Controller {
 		$this->load->model('memo/memodata');
 	}	
 	function index(){
-		$username = $this->session->userdata('username');
 		$userid = $this->session->userdata('user_id');
-		$data['username']=$username;
 		$data['userid']=$userid;
 		$this->load->model('memo/memodata');
 		$this->load->view('templates/header');
-		$this->load->view('apps/memcalendar');
-		$this->load->view('apps/memomain', $data);
+		$this->load->view('memo/memomain',$data);
+		$thedate['thedate'] = $this->memodata->Datequery($userid);
+		$thedate['title'] = $this->memodata->Datequery($userid);
+		$this->load->view('memo/datecontainer', $thedate);
+		$this->load->view('memo/memcalendar');
+		$this->load->view('memo/memocontainer');
 		$this->load->view('templates/footer');
 	}
 	
@@ -58,11 +60,14 @@ class Memo extends CI_Controller {
 		$this->memodata->Savepos($data);
 	}
 	function getmemo(){
-		
 		$jdate = $this->input->post('jdate');
 		$this->load->model('memo/memodata');
 		$data['memo'] = $this->memodata->Memoquery($jdate);
-		$this->load->view('apps/thememo', $data);
+		$this->load->view('memo/thememo', $data);
 		}
-
+	function deletememo(){
+		$this->load->model('memo/memodata');
+		$memoid = $this->input->post('memoid');
+		$this->memodata->Deletememo($memoid);
+	}	
 }

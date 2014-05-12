@@ -8,7 +8,7 @@
 |--------------------------------------------------------------------------
 */
 $config['website_name'] = 'Sean Anderson Project';
-$config['webmaster_email'] = 'ander562@uwm.edu';
+$config['webmaster_email'] = 'sean_anderson@monkbunker.com';
 
 /*
 |--------------------------------------------------------------------------
@@ -41,9 +41,9 @@ $config['phpass_hash_strength'] = 8;
 */
 $config['allow_registration'] = TRUE;
 $config['captcha_registration'] = TRUE;
-$config['email_activation'] = TRUE;
+$config['email_activation'] = FALSE;
 $config['email_activation_expire'] = 60*60*24*2;
-$config['email_account_details'] = TRUE;
+$config['email_account_details'] = FALSE;
 $config['use_username'] = TRUE;
 
 $config['username_min_length'] = 4;
@@ -73,7 +73,7 @@ $config['login_by_email'] = TRUE;
 $config['login_record_ip'] = TRUE;
 $config['login_record_time'] = TRUE;
 $config['login_count_attempts'] = TRUE;
-$config['login_max_attempts'] = 5;
+$config['login_max_attempts'] = 20;
 $config['login_attempt_expire'] = 60*60*24;
 
 /*
@@ -116,7 +116,7 @@ $config['captcha_height'] = 50;
 $config['captcha_font_size'] = 14;
 $config['captcha_grid'] = FALSE;
 $config['captcha_expire'] = 180;
-$config['captcha_case_sensitive'] = TRUE;
+$config['captcha_case_sensitive'] = FALSE;
 
 /*
 |--------------------------------------------------------------------------
@@ -126,9 +126,9 @@ $config['captcha_case_sensitive'] = TRUE;
 | You can get reCAPTCHA keys by registering at http://recaptcha.net
 |--------------------------------------------------------------------------
 */
-$config['use_recaptcha'] = FALSE;
-$config['recaptcha_public_key'] = '';
-$config['recaptcha_private_key'] = '';
+$config['use_recaptcha'] = TRUE;
+$config['recaptcha_public_key'] = '6Lf_u_ISAAAAAK1vTwSPem8eBDMdhuyeOt4nY3xK';
+$config['recaptcha_private_key'] = '6Lf_u_ISAAAAAG8YqROysFiw_gaRHTR7i3ZFyMI5';
 
 /*
 |--------------------------------------------------------------------------

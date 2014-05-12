@@ -1,17 +1,48 @@
-<button id="showcats"class="btn btn-primary submitbut btn-block"><h4>My Movie Lists</h4></button>
-<div class="newdvdcon catcon well well-lg">
+<button id="showcats"class="whitebutton"><h4>My Movie Lists</h4></button>
+<div class="catcon well well-lg">
+   <table class="table">
 <?php foreach ($category as $cat):?>
-	 
-      <table class="table table-striped">
-        <tr>
-        <td><h5><?=$cat['title']?></h5></td>
-       <td><img src="<?=$cat['thumburl']?>"class="thumbnail"/></td>
-    <td><h5><?=$cat['category'];?></h5></td>
-  </table>
+   <tr>
+        <td class="shrink"><button id="thecat_<?=$cat['category'];?>"class="deletebut" onClick="delThisCat('<?=$cat['category']?>')"><span class="glyphicon glyphicon-remove"></span></button></td>
+    <td><button class="whitebutton"onClick="getCatsLink('<?=$cat['category']?>')"><?=$cat['category'];?></button></td>
+ <script>  
+    function getCatsLink(category){
+          var request = category;
+                $.ajax({
+            url: "movie/getcatitem/",
+            type: "POST",
+            data: { "category" : category },
+            dataType: "html",
+            success: function(cat){
+              $( "#theitems" ).html( cat );
+            }
+            });
+              }
+    function delThisCat(thecat){
+        var answer = confirm ("Are you sure you want to remove this Category?");
+        if (answer){
+                $.ajax({
+            url: "movie/deletecat/",
+            type: "POST",
+            data: { "category" : thecat },
+            dataType: "html",
+            success:function(){
+            var selector = '#thecat_'+thecat;
+            $(selector).parents('tr').remove();
+                } 
+            });
+              }
+            }
+
+      </script>
 <?php endforeach; ?>
+ </table>
+ <div id="theitems">
+
+  </div>
 </div>
-<div class="clearfix"></div>
-</div> <!--close moviewrapper-->
+</div>
+
 
 <script>
 $(document).ready(function () {

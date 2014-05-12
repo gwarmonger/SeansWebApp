@@ -1,45 +1,16 @@
-
-	<!-- Section 1 -->
-<section id="intro" data-speed="6" data-type="background">
-    <div class="container">
-        <div class="col-md-6">
-			<img class="img-responsive" src="<?=base_url();?>images/seanface2.jpg"/>
-		</div>
-			<div class="col-md-6">
-				<h3>A king amongst kings, Sean A ain't nothing to @#%! with.</h3>
-				</div>
-	</div>
-    </div>
-</section>
-
-<!-- Section 2 -->
-<section id="home" data-speed="4" data-type="background">
-    <div class="container">
-       <div class="col-md-6">
-			<img class="img-responsive" src="<?=base_url();?>images/seanface3.jpg"/>
-		</div>
-    </div>
-</section>
-
-<!-- Section 3 -->
-<section id="about" data-speed="2" data-type="background">
-    <div class="container">
-        Peek-a-boo!
-    </div>
-</section>
-
-<script>
-$(document).ready(function(){
-   $window = $(window);
-   $('section[data-type="background"]').each(function(){
-     var $scroll = $(this);
-      $(window).scroll(function() {                        
-        var yPos = -($window.scrollTop() / $scroll.data('speed'));
-        var coords = '50% '+ yPos + 'px';
-        // move the background
-        $scroll.css({ backgroundPosition: coords });   
-      }); 
-   }); 
-});
-document.createElement("section");
-</script>
+<div class="container">
+  <div class="row">
+  <div class="col-md-6">
+<img class="seanimage"src="<?=base_url();?>images/sean2.png"/>
+<h4>Contact: <a href="mailto:sean_anderson508@uwm.edu" target="_top">sean_anderson508@uwm.edu</a></h4>
+</div>
+<div class="col-md-6 blesdfont">
+  <center><h4>I am Sean Anderson. And this is my</h4> <h5 class="monktext">monk bunker</h5></center>
+  <hr/>
+  <center><h5 class="basicfont">Sean is</h5>
+  <center><h4 class="blesdfont">Brilliant</h4></center>
+  <center><h4 class="blesdfont">Charming</h4></center>
+  <center><h4 class="blesdfont">Eclectic</h4></center>
+</div>
+</div>
+</div>

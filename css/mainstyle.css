@@ -1,0 +1,85 @@
+@font-face
+{
+font-family: barbie;
+src: url(../fonts/barbie.ttf);
+}
+a:hover {text-decoration: none}
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 100px;
+}
+.thefont{
+font-family: 'Cutive Mono';
+}
+.thefont2{
+font-family: 'barbie';
+}
+.whitecolor{
+	color:white;
+}
+.darkredcolor{
+	color:#D489B7;
+	text-shadow: 10px 7px .2px rgba(229, 6, 77, 0.3);
+	font-size:20px;
+	margin-left: -80px;
+	margin-top: 36px;
+	font-size:4em;
+}
+.maincontainer{
+	background: #515151;
+	height:100%;
+	min-height:100%;
+}
+.innerwrapper{
+	margin-top: 20px;
+	background-image:url('../images/pattern.png');
+	position: relative;
+	z-index: 2;
+	-moz-border-image:url("../images/metalborder.jpg") 28% 18% 28% 63% repeat repeat;
+	-webkit-border-image:url("../images/metalborder.jpg") 28% 18% 28% 63% repeat repeat;
+	border-image:url("../images/metalborder.jpg") 28% 18% 28% 63% repeat repeat;
+	border-width:0 0 0 73px;
+}
+.secback{
+	background:#3B3B3B;
+	}
+
+.headerRow{
+	background:black;
+	padding:0;
+	margin:0;
+	width:100%;
+	max-width: 100%;
+	z-index: 1;
+	box-shadow: 2px 4px 3px 6px rgba(0, 0, 0, 0.40);
+}
+.footer{
+	background:black;
+	position: absolute;
+  	bottom: 0;
+    width: 100%;
+	height:100px;
+	margin-top:20px;
+}
+.well{
+	background:#444444;
+	box-shadow: 2px 4px 3px 6px rgba(0, 0, 0, 0.34);
+}
+.well-sm{
+	background:#545454;
+	color:yellow;
+	box-shadow: 2px 4px 3px 6px rgba(0, 0, 0, 0.66);
+	-moz-border-image:url("../images/metalborder.jpg") 28% 18% 28% 63% repeat repeat;
+	border-image:url("../images/metalborder.jpg") 28% 18% 28% 63% repeat repeat;
+	border-width:0 0 0 73px;
+}
+
+@media (max-width:1300px){
+	.darkredcolor{
+	margin-left: 0;
+	margin-top: 0;
+}

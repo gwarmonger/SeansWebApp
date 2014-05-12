@@ -1,29 +1,25 @@
-<div id="containermain">
-<div class="container">
-
-<div class='col-xs-5 col-sm-2 list-group-item list-header'><b>Title</b></div>
-<div class='col-xs-6 col-sm-3 list-group-item list-header'><b>Description</b></div>
-</div>
-		
-<?php
-foreach ($query as $dataitem):
-?>
-	 
-	<ul id='setname_number'class='container' style='list-style:none; border-bottom:1px #BACCEE solid;'>
-		<audio ontimeupdate='updateprogress<?=$dataitem->songid?>()'id='<?=$dataitem->songid?>'src='<?=$dataitem->url?>'></audio>
-		<li class='col-xs-5 col-sm-2'><a href='' download='<?=$dataitem->url?>'><?=$dataitem->title?></a></li>
-		<li class='col-xs-6 col-sm-3'><?=$dataitem->description?></li>
-		<li class='col-xs-6 col-sm-3'><div id='playercontainer'>
-    		<button class='btn btn-primary' onclick='playaudio('<?=$dataitem->songid?>')'>
+<table class="table table-striped table-bordered space">
+	<tr>
+<td><b>Title</b></td>
+<td><b>Description</b></td>
+</tr>
+<?php foreach ($query as $dataitem): ?>
+		<tr id="mainrow_<?=$dataitem->songid?>">
+		<audio ontimeupdate='updateprogress<?=$dataitem->songid?>()'id='<?=$dataitem->songid?>'src='<?=base_url();?>/uploads/<?=$dataitem->songurl?>'></audio>
+		<td><a href='' download='<?=$dataitem->songurl?>'><?=$dataitem->songname?></a></td>
+		<td><?=$dataitem->songdesc?></td>
+		<td>
+    		<button class='btn btn-primary' onclick="playaudio('<?=$dataitem->songid?>')">
     			<span class='glyphicon glyphicon-play'></span>
     		</button>
-    		<button class='btn btn-primary' onclick='pauseaudio('<?=$dataitem->songid?>')'>
+    		<button class='btn btn-primary' onclick="pauseaudio('<?=$dataitem->songid?>')">
 				<span class='glyphicon glyphicon-pause'></span></button>
-		</br>
-			<progress id='seekbar<?=$dataitem->songid?>' value='0' max='1' style='height:34px; width:80px'></progress>
-			</li>
-	</ul>
-
+			</br>
+			<progress id='seekbar<?=$dataitem->songid?>' class="progressbar"value='0' max='1'></progress>
+			</td>
+			<td><button id="item_<?=$dataitem->songid?>" onClick="delSong('<?=$dataitem->songid?>')"class="deletebut">
+    <span class="glyphicon glyphicon-remove"></span></button></td>
+			</tr>
 			<script type='text/javascript'>
 	 		function playaudio(songid){
 			document.getElementById(songid).play();
@@ -32,14 +28,43 @@ foreach ($query as $dataitem):
 		 	document.getElementById(songid).pause();
 			}
 			var songid = '<?=$dataitem->songid?>';
-			console.log(songid);
 			function updateprogress<?=$dataitem->songid?>(){
 			var player = document.getElementById('<?=$dataitem->songid?>');
 			var progressbar = document.getElementById('seekbar<?=$dataitem->songid?>');
 			progressbar.value = (player .currentTime / player .duration);
  			};
- 		 </script>
+ 		 </script> 		
 	<?php endforeach; ?>
+</table>
+</div> <!--opened in songupload.php-->
 
-
-</div>
+<script>
+$(document).ready(function () {
+    $('.sortable').sortable({
+        axis: 'y',
+        stop: function (event, ui) {
+	        var data = $(this).sortable('serialize');
+            $('span').text(data);
+            /*$.ajax({
+                    data: oData,
+                type: 'POST',
+                url: '/your/url/here'
+            });*/
+	}
+    });
+});
+function delSong(songid){
+    var answer = confirm ("Are you sure you want to remove this song?");
+    if (answer){
+        $.ajax({
+            url: "songshare/songdelete/",
+            type: "POST",
+            data: { "songid" : songid },
+            dataType: "html",
+            success:function(){
+            $("#mainrow_<?=$dataitem->songid?>").remove();
+                } 
+            });
+            }
+              }
+</script>

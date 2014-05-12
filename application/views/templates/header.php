@@ -2,18 +2,18 @@
 <html lang="en">
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The web application portfolio of recent University of Wisconsin graduate Sean Anderson">
+		<link href='<?=base_url();?>fonts/alwaysforever.ttf' rel='stylesheet' type='text/css'>
+	<link href='<?=base_url();?>fonts/linowrite.ttf' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Trocchi' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="<?=base_url();?>css/normalize.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="<?=base_url();?>css/bootstrap.css" type="text/css" media="screen" />
-	<link rel="stylesheet" class="change" href="<?=base_url();?>css/memocss.css" type="text/css" media="screen" />
+	<link rel="stylesheet" class="change" href="<?=base_url();?>css/main.css" type="text/css" media="screen" />
 	<script type="text/javascript" src="<?=base_url();?>js/jquery-1.10.2.js"></script>
 	<script type="text/javascript" src="<?=base_url();?>js/jquery-ui-1.10.4.custom.min.js"></script>
 	<script type="text/javascript" src="<?=base_url();?>js/bootstrap.js"></script>
-	<script type="text/javascript" src="<?=base_url();?>js/jquery.cookie.js"></script>
-	<link href='<?=base_url();?>fonts/alwaysforever.ttf' rel='stylesheet' type='text/css'>
-	<link href='<?=base_url();?>fonts/linowrite.ttf' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Trocchi' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans:800' rel='stylesheet' type='text/css'>
-<title>Sean App</title>
+
+<title>The Monk Bunker</title>
 
 </head>
 
@@ -29,6 +29,7 @@
 		'"A friend is someone who knows all about you and still loves you." - <span class="author">Elbert Hubbard</span>',
 		'"Always forgive your enemies; nothing annoys them so much." - <span class="author">Oscar Wilde</span>', 
 		'"I am so clever that sometimes I don\'t understand a single word of what I am saying." - <span class="author">Oscar Wilde</span>',
+		'"Thurdays. I could never get the hang of Thursdays." - <span class="author">Arthur Dent</span>',
 		'"Darkness cannot drive out darkness: only light can do that. Hate cannot drive out hate: only love can do that." - <span class="author">Martin Luther King, Jr.</span>',
 );
 	$rand_keys = array_rand($welcomings, 2);
@@ -39,12 +40,13 @@
 	<nav id="mainheader" class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
-    <div id="topheader" class="row">
-    	<div class="col-xs-6 col-md-4 sidecontainer"><h4>The Monk Bunker</h4>
-    	</div>	
-    	<div class="quote marpad col-xs-9 pull-right">
+    <div id="topheader">
+    	<div class="col-md-6 sidecontainer"><h4 class="monktext">The Monk Bunker</h4></div>
+    	<div class="col-md-6"></div>
+    	<div class="col-md-6"></div>	
+    	<div class="quote marpad col-md-6 pull-right">
 		<img class="pull-left headerimage" src="<?=base_url();?>images/header-border-left.png"/>
-		<div><?=$thephrase?></div> 
+		<div class="phrasetext"><?=$thephrase?></div> 
     	
 		</div>
   
@@ -61,12 +63,23 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav font margintop">
-         <li><a id="link1" href="<?=base_url('index.php/songshare');?>" >Songshare</a></li>
-  		<li><a id="link2" href="<?=base_url('index.php/memo');?>">Memo</a></li>
-  		<li><a id="link3" href="<?=base_url('index.php/movie');?>" >Movies</a></li>
-     
+      	 <li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+      About Me<span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      <li><a id="link4" href="<?=base_url('index.php/aboutme');?>">Profile</a></li>
+      <li><a id="link4" href="<?=base_url('index.php/seantherobot');?>">My Music</a></li>
+    </ul>
+  </li>
+        <?php if ($this->tank_auth->is_logged_in()) {?>
+        <?="<li><a id='link1' href='".base_url("index.php/songshare")."'>Song Storage</a></li>";?>
+        <?="<li><a id='link2' href='".base_url("index.php/memo")."'>Memo</a></li>";?>
+        <?="<li><a id='link3' href='".base_url("index.php/movie")."'>Movie</a></li>";}
+    else{?>
+    	<?="<li><a id='link5' href='".base_url("index.php/auth/register")."'>Register</a></li>";?>
+    	<?="<li><a id='link6' href='".base_url("index.php/auth/login")."'>Login</a></li>";}?>
        </ul>
-      <div class="pull-right"><a id="link4"   href="<?=base_url('index.php/auth/logout');?>" >Logout</a></div>   
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
   </div>
@@ -80,16 +93,5 @@ $('ul.nav a').filter(function() {
     return this.href == url;
 }).parent().addClass('active');
 
-//sets cookie for CSS sheet
-if($.cookie("css")) {
-	$(".change").attr("href",$.cookie("css"));
-}
-$(document).ready(function() { 
-	$(".colorbutton").click(function() { 
-		$(".change").attr("href",$(this).attr('data-thecss'));
-		$.cookie("css",$(this).attr('data-thecss'), {expires: 365, path: '/'});
-		return false;
-	});
-});
 </script>
-<div class="mainwrapper container-fluid">
+<div class="container-fluid">

@@ -1,4 +1,4 @@
-<div class="col-md-6">
+<div class="col-md-8">
 		<div class="topmargin">
 		<?php
 		$attributes = array('class' => 'form-inline');
@@ -12,3 +12,4 @@
 		</div>
 		<?=form_close();?>
 	</div>
+

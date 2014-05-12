@@ -15,7 +15,7 @@ $data = curl_exec($session);
 curl_close($session);
 
 // decode json
-//ask about the true attr 
+ 
 $search_results = json_decode($data,true);
 
 if ($search_results === NULL) die('Error parsing json');
@@ -25,8 +25,8 @@ $nprs = $search_results['list']['story'];
 //var_dump($search_results);
 //var_dump($nprs);
 ?>
-<div class="moviewrapper clearfix">
-<div class="col-md-3 dropimage">
+<div class="container-fluid">
+<div class="col-md-4 dropimage">
   <button id="shownpr"class="btn btn-primary btn-block background2"><h4>NPR Movie Articles</h4></button>
   <div class="nprcont">
   <?php foreach ($nprs as $npr):?>
@@ -39,7 +39,7 @@ $nprs = $search_results['list']['story'];
   </tr></td>
   </table>
 <?php endforeach; ?>
-</div>
+
 </div>
 
 
@@ -82,3 +82,4 @@ $(document).ready(function () {
         });
       });
 </script>
+

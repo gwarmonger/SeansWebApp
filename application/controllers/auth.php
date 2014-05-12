@@ -21,12 +21,6 @@ class Auth extends CI_Controller
 			redirect('home');
 		}
 	}
-	function usertest(){
-			$userThis['username'] = $this->session->userdata('username');
-			$this->load->view('home', $userThis);
-
-	}
-
 	/**
 	 * Login user on the site
 	 *
@@ -73,7 +67,7 @@ class Auth extends CI_Controller
 						$this->form_validation->set_value('remember'),
 						$data['login_by_username'],
 						$data['login_by_email'])) {								// success
-					redirect('');
+					redirect('/auth/login/');
 
 				} else {
 					$errors = $this->tank_auth->get_error_message();
@@ -98,6 +92,9 @@ class Auth extends CI_Controller
 				}
 			}
 			$this->load->view('auth/login_form', $data);
+			$this->load->view('mainpage');
+			$this->load->view('templates/footer');
+
 		}
 	}
 
@@ -110,7 +107,7 @@ class Auth extends CI_Controller
 	{
 		$this->tank_auth->logout();
 	//$this->_show_message($this->lang->line('auth_message_logged_out'));
-		redirect('home');
+		redirect('');
 	}
 
 	/**
@@ -263,6 +260,7 @@ class Auth extends CI_Controller
 	 */
 	function forgot_password()
 	{
+		$this->load->view('templates/header');
 		if ($this->tank_auth->is_logged_in()) {									// logged in
 			redirect('');
 
@@ -292,6 +290,7 @@ class Auth extends CI_Controller
 			}
 			$this->load->view('auth/forgot_password_form', $data);
 		}
+			$this->load->view('templates/footer');
 	}
 
 	/**
@@ -468,7 +467,7 @@ class Auth extends CI_Controller
 	function _show_message($message)
 	{
 		$this->session->set_flashdata('message', $message);
-		redirect('/auth/');
+		redirect('/auth/login/');
 	}
 
 	/**

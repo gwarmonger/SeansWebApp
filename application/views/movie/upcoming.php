@@ -21,8 +21,13 @@ $search_results = json_decode($data);
 if ($search_results === NULL) die('Error parsing json');
 
 // the data
-$ups = $search_results->movies;
-?>
+$ups = $search_results->movies;?>
+<script>
+function getTheUp(movid){
+  var selector = '#upmodal_'+ movid; 
+ $(selector).modal('show');   
+  }
+</script>
 <button id="showupcoming"class="btn btn-primary submitbut btn-block greenback3"><h4>Coming Soon</h4></button>
 <div class="newdvdcon newupcon well well-lg">
 <div class="row">
@@ -30,21 +35,18 @@ $ups = $search_results->movies;
 	  <div class="col-md-3">
       <div class="caption">
          
-      <center><button type="button" onclick="document.addform.submit()" class="btn btn-primary">Add to List</button></center>
+      <center><button class="btn btn-primary"value="<?=$up->id?>" data-thumburl="<?=$up->posters->thumbnail?>"data-title="<?=$up->title ?>" data-toggle="modal" data-target="#addmovie">Add to Watch List</button></center>
         <h5><?=$up->title?></h5>
       </div>
-    <center><img src="<?=$up->posters->profile?>" onClick="upmodal_<?=$up->id?>()" class="thumbnail"/></center></div>
+    <center><img src="<?=$up->posters->profile?>" onClick="getTheUp('<?=$up->id?>')" class="thumbnail"/></center></div>
    
 <?php endforeach; ?>
 </div>
 </div>
-<script>
-<?php foreach ($ups as $up): ?>
-var upmodal_<?=$up->id?> = function(){
-$('#upmodal_<?=$up->id?>').modal('show')
-}
-<?php endforeach; ?>
-</script>
+</div>
+</div>
+</div>
+<div class="clearfix"></div>
 
 <!-- Small modal -->
 <?php foreach ($ups as $up): ?>
@@ -61,10 +63,19 @@ $('#upmodal_<?=$up->id?>').modal('show')
 
 <script>
 $(document).ready(function () {
-        $('.newupcon').hide();
-        $('#showupcoming').click(function () {
-        $('.newupcon').slideToggle(200, function (){
-          });
-        });
-      });
+$('.newupcom').hide();
+$('#showupcoming').click(function () {
+$('.newupcon').toggle( "puff" );
+});
+});
+$(document).ready(function(){
+$("button").click(function(){
+  var theid = $(this).val();
+  var thetitle = $(this).data('title');
+  var thumburl = $(this).data('thumburl');
+$("#movieid").attr("value", theid );
+$("#title").attr("value", thetitle );
+$("#thumburl").attr("value", thumburl );
+});
+});
 </script>

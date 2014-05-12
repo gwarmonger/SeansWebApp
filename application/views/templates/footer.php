@@ -1,11 +1,19 @@
-</div><!--div for mainwrapper-->
+
 <div id="footer"class="row col-md-12">
-<div class="col-md-2">
-			<div id="colorcontainer">
-				<h5>Choose your flavor:</h5>
-			<button id="testbutton"class="colorbutton colorbutt1" data-thecss="<?=base_url();?>css/memocss.css"></button>
-			<button class="colorbutton colorbutt2" data-thecss="<?=base_url();?>css/greenstyles.css"></button>
-		</div>
+	<div class="col-md-2 footerlinks">
+		<div class="linkcon">
+		<?php if ($this->tank_auth->is_logged_in()) {?>
+	<?="<div><center><a class='font' href='".base_url("index.php/auth/logout")."'>Logout</a></center></div>";?>
+	<?="<div><center><a class='font' href='".base_url("index.php/auth/unregister")."'>Unregister</a></center></div>";?>
+	<?php }?>
+	<div><center>
+		<a href="mailto:sean_anderson508@uwm.edu" target="_top">Contact Us</a>
+</center></div>
+</div>
 	</div>
+	<div class="col-md-10"><h4 class="monktext">The Monk Bunker</h4></div>
+</div>
+</div><!--div for mainwrapper-->
+	<div class="clearfix"></div>
 </body>
 </html>

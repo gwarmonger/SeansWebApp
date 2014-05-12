@@ -26,7 +26,8 @@ $nycs = $search_results['results'];
 //var_dump($nycs);
 //var_dump($nprs);
 ?>
-<div class="col-md-3 dropimage1">
+
+<div class="dropimage1">
 	<button id="shownyc"class="btn btn-primary background1  btn-block"><h4>NY Times Movie Reviews</h4></button>
 	<div class="nycont">
 	<?php foreach ($nycs as $nyc): ?>
@@ -39,6 +40,7 @@ $nycs = $search_results['results'];
      </tr></td>
      </table>
 <?php endforeach; ?>
+
 </div>
 </div>
 
