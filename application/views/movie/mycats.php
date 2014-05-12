@@ -19,7 +19,7 @@
             });
               }
     function delThisCat(thecat){
-        var answer = confirm ("Are you sure you want to remove this Category?");
+        var answer = confirm ("Are you sure you want to remove this category?");
         if (answer){
                 $.ajax({
             url: "movie/deletecat/",
@@ -27,8 +27,7 @@
             data: { "category" : thecat },
             dataType: "html",
             success:function(){
-            var selector = '#thecat_'+thecat;
-            $(selector).parents('tr').remove();
+            $('.shrink').parents('tr').remove();
                 } 
             });
               }

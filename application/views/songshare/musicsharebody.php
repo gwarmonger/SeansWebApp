@@ -4,20 +4,20 @@
 <td><b>Description</b></td>
 </tr>
 <?php foreach ($query as $dataitem): ?>
-		<tr id="mainrow_<?=$dataitem->songid?>">
-		<audio ontimeupdate='updateprogress<?=$dataitem->songid?>()'id='<?=$dataitem->songid?>'src='<?=base_url();?>/uploads/<?=$dataitem->songurl?>'></audio>
-		<td><a href='' download='<?=$dataitem->songurl?>'><?=$dataitem->songname?></a></td>
-		<td><?=$dataitem->songdesc?></td>
+		<tr id="mainrow_<?=$dataitem['songid']?>">
+		<audio ontimeupdate='updateprogress<?=$dataitem['songid']?>()'id='<?=$dataitem['songid']?>'src='<?=base_url();?>/uploads/<?=$dataitem['songurl']?>'></audio>
+		<td><a href='' download='<?=$dataitem['songurl']?>'><?=$dataitem['songname']?></a></td>
+		<td><?=$dataitem['songdesc']?></td>
 		<td>
-    		<button class='btn btn-primary' onclick="playaudio('<?=$dataitem->songid?>')">
+    		<button class='btn btn-primary' onclick="playaudio('<?=$dataitem['songid']?>')">
     			<span class='glyphicon glyphicon-play'></span>
     		</button>
-    		<button class='btn btn-primary' onclick="pauseaudio('<?=$dataitem->songid?>')">
+    		<button class='btn btn-primary' onclick="pauseaudio('<?=$dataitem['songid']?>')">
 				<span class='glyphicon glyphicon-pause'></span></button>
 			</br>
-			<progress id='seekbar<?=$dataitem->songid?>' class="progressbar"value='0' max='1'></progress>
+			<progress id='seekbar<?=$dataitem['songid']?>' class="progressbar"value='0' max='1'></progress>
 			</td>
-			<td><button id="item_<?=$dataitem->songid?>" onClick="delSong('<?=$dataitem->songid?>')"class="deletebut">
+			<td><button id="item_<?=$dataitem['songid']?>" onClick="delSong('<?=$dataitem['songid']?>')"class="deletebut">
     <span class="glyphicon glyphicon-remove"></span></button></td>
 			</tr>
 			<script type='text/javascript'>
@@ -27,10 +27,10 @@
 			function pauseaudio(songid){
 		 	document.getElementById(songid).pause();
 			}
-			var songid = '<?=$dataitem->songid?>';
-			function updateprogress<?=$dataitem->songid?>(){
-			var player = document.getElementById('<?=$dataitem->songid?>');
-			var progressbar = document.getElementById('seekbar<?=$dataitem->songid?>');
+			var songid = "<?=$dataitem['songid']?>";
+			function updateprogress<?=$dataitem['songid']?>(){
+			var player = document.getElementById("<?=$dataitem['songid']?>");
+			var progressbar = document.getElementById("seekbar<?=$dataitem['songid']?>");
 			progressbar.value = (player .currentTime / player .duration);
  			};
  		 </script> 		
@@ -62,7 +62,7 @@ function delSong(songid){
             data: { "songid" : songid },
             dataType: "html",
             success:function(){
-            $("#mainrow_<?=$dataitem->songid?>").remove();
+            $("#mainrow_<?=$dataitem['songid']?>").remove();
                 } 
             });
             }
