@@ -1,4 +1,5 @@
 <div class="col-md-8">
+	<div class="well mainwell">
 <h3>Welcome to Sean's demo app.</h3>
 <h6>*This is a beta release.</h6>
 <p>The app consists of a login system. Once registered and logged in, other options become available in the navigation</p>
@@ -18,8 +19,9 @@
 		I have also used NPR and NY Times APIs to pull in movie articles. The user can also create a category and then add movies to their categories.
 	</li>
 	</br>
-	<li>The site is responsive (though I have not tested extensively yet across devices).</li>
+	<li>The site is responsive.</li>
 	</br>
 	<li>My code is available for viewing at <a href="https://github.com/gwarmonger/SeansWebApp">https://github.com/gwarmonger/SeansWebApp</a></li>
 </ul> 
+</div>
 </div>
