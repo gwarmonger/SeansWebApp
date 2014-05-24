@@ -3,7 +3,7 @@
 <?php		
 foreach ($memo as $memoitem)
 {?>		
-<div id="item_<?=$memoitem['memoid'];?>"class="expandable_note_box draggable pull-right">
+<div id="<?=$memoitem['memoid'];?>"class="expandable_note_box draggable pull-right">
 	<div class="slide<?=$memoitem['memoid'];?> middle">
 		<button id="item_<?=$memoitem['memoid'];?>" onClick="delMemo('<?=$memoitem['memoid']?>')"class="deletebut2">
 		<span class="glyphicon glyphicon-remove"></span></button>

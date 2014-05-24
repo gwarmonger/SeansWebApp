@@ -32,6 +32,7 @@ $nprs = $search_results['list']['story'];
 		<h3>More Homepage stuff coming soon!!!</h3>
 	</div>
 	<div class="col-md-4">
+		<div class="well mainwell">
 	<h3>Latest NPR News</h3>	
 	<?php foreach ($nprs as $npr):
 	?>
@@ -42,6 +43,7 @@ $nprs = $search_results['list']['story'];
      
     <a href="<?=$theitem?>"><p>Full Story...</p></a>
 	<?php endforeach; ?>
+</div>
 </div>
 </div>
 </div>

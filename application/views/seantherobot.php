@@ -63,17 +63,17 @@
                 <p class="whitecolor">This is Sean the Robot on vocals. Kraftwerkesque.</p>
                 
                 <a href="<?=base_url();?>/songs/Sean_the_Robot-This_is_the_Beat.mp3" download><span class="glyphicon glyphicon-save"></span>This is the Beat</a>
-                <audio src="<?=base_url();?>/songs/Sean_the_Robot-This_is_the_Beat.mp3" preload="auto"></audio>
+                <audio src="<?=base_url();?>/songs/Sean_the_Robot-This_is_the_Beat.mp3" preload="none"></audio>
             </div>
             <div class="songcontainer well">
                 <p class="whitecolor">The fantasy song. It's fantastical. My friend Colin on vocals.</p>
                 <a href="<?=base_url();?>/songs/Sean_the_Robot-Fantasy.mp3" download><span class="glyphicon glyphicon-save"></span>Fantasy</a>
-                <audio src="<?=base_url();?>/songs/Sean_the_Robot-Fantasy.mp3" preload="auto"></audio>
+                <audio src="<?=base_url();?>/songs/Sean_the_Robot-Fantasy.mp3" preload="none"></audio>
             </div>
             <div class="songcontainer well">
                 <p class="whitecolor">I downloaded these vocals from a site, Looperman. It has an accapella section that people post vocals on (and it is NO easy task to find internet vocals that won't make your ears bleed). I would credit the person but I have no idea what the username is. </p>
                 <a href="<?=base_url();?>/songs/Sean_the_Robot-The_Path.mp3" download><span class="glyphicon glyphicon-save"></span>The Path</a>
-                <audio src="<?=base_url();?>/songs/Sean_the_Robot-The_Path.mp3" preload="auto"></audio> 
+                <audio src="<?=base_url();?>/songs/Sean_the_Robot-The_Path.mp3" preload="none"></audio> 
             </div>
             </div>
             <div class="col-md-6">
@@ -81,13 +81,13 @@
             <div class="songcontainer well">
                 <p class="whitecolor">Weird swirly synthesizers. Crazy breakbeaty drums.</p>
                 <a href="<?=base_url();?>/songs/Sean_the_Robot-Electric_Sheep_Have_No_Feelings.mp3" download><span class="glyphicon glyphicon-save"></span>Electric Sheep Have No Feelings</a>
-                <audio src="<?=base_url();?>/songs/Sean_the_Robot-Electric_Sheep_Have_No_Feelings.mp3" preload="auto"></audio>
+                <audio src="<?=base_url();?>/songs/Sean_the_Robot-Electric_Sheep_Have_No_Feelings.mp3" preload="none"></audio>
             </div>
             <h4 class="whitecolor thefont well well-sm">Breakbeat kind of stuff</h4>
             <div class="songcontainer well">
                 <p class="whitecolor">House Track. Some piano and synths.</p>
                 <a href="<?=base_url();?>/songs/Sean_the_Robot-Trancy_Song.mp3" download><span class="glyphicon glyphicon-save"></span>Trancy Song</a>
-                <audio src="<?=base_url();?>/songs/Sean_the_Robot-Trancy_Song.mp3" preload="auto"></audio>
+                <audio src="<?=base_url();?>/songs/Sean_the_Robot-Trancy_Song.mp3" preload="none"></audio>
             </div>
             </div>
             </div>

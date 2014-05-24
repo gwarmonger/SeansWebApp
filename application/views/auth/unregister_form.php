@@ -5,6 +5,9 @@ $password = array(
 	'size'	=> 30,
 );
 ?>
+<div class="container">
+	<div>
+		<center><div class="input-group">
 <?php echo form_open($this->uri->uri_string()); ?>
 <table>
 	<tr>
@@ -15,3 +18,7 @@ $password = array(
 </table>
 <?php echo form_submit('cancel', 'Delete account'); ?>
 <?php echo form_close(); ?>
+<h4>*Currently clicking the unregister button will cause an error. This will be fixed soon. Your account will still be deleted.</h4>
+</div>
+</div>
+</div>

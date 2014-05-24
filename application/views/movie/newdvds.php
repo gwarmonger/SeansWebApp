@@ -43,7 +43,8 @@ function getTheDvd(movid){
 <div id="dvdmodal_<?=$dvd->id?>"class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
-      
+      <button onClick="$('#dvdmodal_<?=$dvd->id?>').modal('hide')"class="deletebut3">
+    <span class="glyphicon glyphicon-remove"></span></button>
       <h3><?=$dvd->title?></h3>
       <h4>Critic Concensus</h4>
       <?php if(property_exists($dvd, 'critics_consensus')) { ?>

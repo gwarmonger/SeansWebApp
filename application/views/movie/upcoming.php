@@ -33,8 +33,7 @@ function getTheUp(movid){
 <div class="row">
 <?php foreach ($ups as $up): ?>
 	  <div class="col-md-3">
-      <div class="caption">
-         
+      <div class="caption"> 
       <center><button class="btn btn-primary"value="<?=$up->id?>" data-thumburl="<?=$up->posters->thumbnail?>"data-title="<?=$up->title ?>" data-toggle="modal" data-target="#addmovie">Add to Watch List</button></center>
         <h5><?=$up->title?></h5>
       </div>
@@ -53,6 +52,8 @@ function getTheUp(movid){
 <div id="upmodal_<?=$up->id?>"class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
+      <button onClick="$('#upmodal_<?=$up->id?>').modal('hide')"class="deletebut3">
+    <span class="glyphicon glyphicon-remove"></span></button>
       <h3><?=$up->title?></h3>
       <h4>Synopsis</h4>
       <p class="well well-lg"><?=$up->synopsis?></p>
@@ -63,7 +64,7 @@ function getTheUp(movid){
 
 <script>
 $(document).ready(function () {
-$('.newupcom').hide();
+$('.newupcon').hide();
 $('#showupcoming').click(function () {
 $('.newupcon').toggle( "puff" );
 });

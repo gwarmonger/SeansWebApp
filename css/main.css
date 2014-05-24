@@ -46,6 +46,7 @@ h3, li{text-align:center;}
 .monktext{
     font-family: barbie;
     font-size:2.5em;
+    
 } 
 .btn-primary:hover{
     background:#F767B3;
@@ -104,8 +105,8 @@ h5{text-align:center;}
 
 #footer{
     background:#15B6D7;
-    height:80px;
-    width:100%;
+    height:auto;
+   
     padding:0;
     margin:0;
     }
@@ -552,6 +553,14 @@ display:none
     padding: 0 3px 0 2px;
     border:0 solid black;
 }
+.deletebut3{
+     position: relative;
+    right: -573px;
+    top: -6px;
+    background:#D0006E;
+    padding: 0 3px 0 2px;
+    border:0 solid black;
+}
 .memotable td{
     width:200px;
     height:150px;
@@ -613,4 +622,37 @@ display:none
 }
 .loginmarg{
     padding-left:5px;
+}
+.squarelist{
+    list-style-type: square;
+}
+.squarelist li{
+    text-align: justify;
+    list-style-type: square;
+}
+.purple{
+    background-color: #624889;
+    color:white;
+    padding-left: 3%;
+    padding-right: 3%;
+}
+.red{
+    background-color:#D23D24;
+    color:white;
+    padding-left: 3%;
+    padding-right: 3%;
+}
+.red2{
+    background-color:#D23D24;
+}
+.yellow{
+    color:yellow;
+    text-align: left;
+    font-weight: bold;
+}
+.yellow2{
+    color:#FFFFBA;
+    text-align: left;
+    font-weight: bold;
+    border-bottom:2px #FFFFBA solid ;
 }

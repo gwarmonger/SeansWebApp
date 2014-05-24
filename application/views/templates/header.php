@@ -3,7 +3,8 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="The web application portfolio of recent University of Wisconsin graduate Sean Anderson">
-		<link href='<?=base_url();?>fonts/alwaysforever.ttf' rel='stylesheet' type='text/css'>
+  <link rel="image_src" href="<?=base_url();?>images/sean2.png">  
+	<link href='<?=base_url();?>fonts/alwaysforever.ttf' rel='stylesheet' type='text/css'>
 	<link href='<?=base_url();?>fonts/linowrite.ttf' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Trocchi' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="<?=base_url();?>css/normalize.css" type="text/css" media="screen" />
@@ -46,7 +47,6 @@
 	$thephrase = $welcomings[$rand_keys[0]]; 
 ?>
 <body>
-
 	<nav id="mainheader" class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -79,7 +79,7 @@
     </a>
     <ul class="dropdown-menu">
       <li><a id="link4" href="<?=base_url('index.php/aboutme');?>">Profile</a></li>
-      <li><a id="link4" href="<?=base_url('index.php/seantherobot');?>">My Music</a></li>
+      <li><a id="link7" href="<?=base_url('index.php/seantherobot');?>">My Music</a></li>
     </ul>
   </li>
         <?php if ($this->tank_auth->is_logged_in()) {?>

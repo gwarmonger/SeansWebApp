@@ -62,6 +62,8 @@ $("#artmodal_<?=$npr['id']?>").modal("show")
 <div id="artmodal_<?=$npr['id']?>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
+      <button onClick="$('#artmodal_<?=$npr['id']?>').modal('hide')"class="deletebut3">
+    <span class="glyphicon glyphicon-remove"></span></button>
   <?php
   foreach($theitem as $item):?>
     <p><?=$item['$text'];?></p>

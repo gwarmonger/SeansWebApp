@@ -448,7 +448,6 @@ class Auth extends CI_Controller
 				if ($this->tank_auth->delete_user(
 						$this->form_validation->set_value('password'))) {		// success
 					$this->_show_message($this->lang->line('auth_message_unregistered'));
-
 				} else {														// fail
 					$errors = $this->tank_auth->get_error_message();
 					foreach ($errors as $k => $v)	$data['errors'][$k] = $this->lang->line($v);
